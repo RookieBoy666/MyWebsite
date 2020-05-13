@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\bootstrap.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\temp\.idea\markdown-exported-files.xml" />
+    <Content Include="assets\temp\.idea\markdown-navigator.xml" />
+    <Content Include="assets\temp\.idea\markdown-navigator\profiles_settings.xml" />
+    <Content Include="assets\temp\.idea\modules.xml" />
+    <Content Include="assets\temp\.idea\preferred-vcs.xml" />
+    <Content Include="assets\temp\.idea\workspace.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="assets\temp\.idea\湖南省公安厅勤指联动系统.iml" />
+    <None Include="wwwroot\img\bg-image.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="assets\js\kindeditor4.1.7\attached\" />
+    <Folder Include="assets\js\uploadify-v2.1.0\example\uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+  </ItemGroup>
+
+</Project>

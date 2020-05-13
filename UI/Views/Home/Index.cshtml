@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link href="~/css/login.css" rel="stylesheet" />
+@*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+<script src="~/lib/jquery/dist/jquery.js"></script>
+@*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+<script type="text/javascript">
+     function Onlogin() {
+         var users = $("#Username").val();
+         var password = $("#Password").val();
+         alert(users);
+         $.ajax({
+             contentType: 'application/json;charset=utf-8',
+             dataType: "json",
+             url: "/SessionFun/PostHeader"  ,
+             beforeSend: function (xhr) {
+                 xhr.setRequestHeader("Name", users);
+                 xhr.setRequestHeader("token", 'djshfdwehh234h3hdjhwhdu23');
+                 xhr.setRequestHeader("password", password);
+             },
+             data: JSON.stringify({ uid: users, pwd: password }),
+             type: 'post',
+             success: function (data) {
+                 //  alert(data);
+                 Console.log(data);
+                 Load();
+             }
+         });
+
+     }
+         //$.ajax({
+         //    type: "POST",
+         //    dataType: "json",
+         //    contentType: 'application/json;charset=utf-8',
+         //    url: "/SessionFun/Login",
+         //    data: JSON.stringify({ uid: users, pwd: password }),
+         //    success: function (d) {
+         //        if (d.Success) {
+         //            //var result = d.Result.split(",");
+         //            //if (result.length == 4) {
+         //            //    // WriteLog(result[0], result[1], result[2], result[3]);
+         //            //}
+         //            Load();
+         //        } else {
+         //            //var ishttps = 'https:' == document.location.protocol ? true : false;
+         //            //if (!ishttps) {
+         //            //    alert("登录地址未加https，点击确定跳转至https网站");
+         //            //    url = "https://10.142.60.53";
+         //            //    window.location.href = url;
+         //            //} else {
+         //            alert(d.ErrorMsg);
+         //            // }
+         //        }
+         //    }
+         //});
+
+
+      //登陆加载
+        function Load() {
+            window.location.href = "@Url.Action("Privacy", "Home")";
+        }
+</script>
+
+
+
+<div id="login-bg" class="container-fluid">
+
+    <div class="bg-img"></div>
+    <div class="bg-color"></div>
+</div>
+
+<!-- End Backgrounds -->
+
+<div class="container" id="login">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="login">
+
+                <h1>Login</h1>
+
+                <!-- Loging form -->
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="Username" aria-describedby="emailHelp" placeholder="Enter email">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="Password" placeholder="Password">
+                    </div>
+
+                    <div class="form-check">
+
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+
+                        <label class="forgot-password"><a href="#">Forgot Password?<a></label>
+
+                    </div>
+
+                    <br>  @*class="btn btn-lg btn-block btn-success"*@
+                    <input type="submit" value="Login" onclick="Onlogin();">
+
+                    <input type="button"  value="Login" onclick="Onlogin();">
+                </form>
+                <!-- End Loging form -->
+
+            </div>Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+        </div>
+    </div>
+</div>
+
+
