@@ -13,20 +13,25 @@
      function Onlogin() {
          var users = $("#Username").val();
          var password = $("#Password").val();
-         alert(users);
+         //alert(users);
+         var data = {
+             users: users,
+             password: password
+         };
+
          $.ajax({
-             contentType: 'application/json;charset=utf-8',
-             dataType: "json",
+             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+             dataType: "text",
              url: "/SessionFun/PostHeader"  ,
-             beforeSend: function (xhr) {
-                 xhr.setRequestHeader("Name", users);
-                 xhr.setRequestHeader("token", 'djshfdwehh234h3hdjhwhdu23');
-                 xhr.setRequestHeader("password", password);
-             },
-             data: JSON.stringify({ uid: users, pwd: password }),
+             //beforeSend: function (xhr) {
+             //    xhr.setRequestHeader("Name", users);
+             //    xhr.setRequestHeader("token", 'djshfdwehh234h3hdjhwhdu23');
+             //    xhr.setRequestHeader("password", password);
+             //},
+             data: data,
              type: 'post',
              success: function (data) {
-                 //  alert(data);
+                alert(data);
                  Console.log(data);
                  Load();
              }

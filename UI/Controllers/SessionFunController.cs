@@ -5,6 +5,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace WebController
@@ -29,12 +30,13 @@ namespace WebController
         /// 不是所有的数据都能自动绑定到方法参数上,比如Header就需要制定FromHeaderAttribute.这里测试Header提交的参数并不能进行模型绑定
         /// </summary>
         [HttpPost]
-        public IActionResult PostHeader([FromHeader]String name, [FromHeader]String password, [FromHeader]String token)// [FromForm]LoginModel model)
+        public async Task<string> PostHeader(string body)
+
         {
             LoginModel model = new LoginModel();
-            model.Name = name;
-            model.Password = password;
-            model.token = token;
+            model.Name = Request.Form["users"];
+            model.Password = Request.Form["password"];
+            //model.token = token;
             ReqMsg msg = new ReqMsg();
             msg.Success = true;
             try
@@ -49,7 +51,7 @@ namespace WebController
                 CreLog.Error(ex);
             }
 
-            CreLog.Info(name);
+            CreLog.Info(model.Name);
             //return Json(msg, System.Web.Mvc.JsonRequestBehavior.AllowGet);
 
             //return Content("hello " + msg);
@@ -57,7 +59,7 @@ namespace WebController
 
             //return "gdgdfgdg";
 
-            return Content("hello " + name + "密码:" + model.Password+model.token);
+            return  ("hello " + model.Name + "密码:" + model.Password+model.token);
         }
 
 

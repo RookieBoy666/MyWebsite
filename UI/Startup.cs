@@ -67,17 +67,17 @@ namespace UI
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync($"name=\"{env.ApplicationName}\"");
-                await context.Response.WriteAsync($"name=\"{env.ContentRootFileProvider}\"");
-                await context.Response.WriteAsync($"name=\"{env.ContentRootPath}\"");
-                await context.Response.WriteAsync($"name=\"{env.EnvironmentName}\"");
-                await context.Response.WriteAsync($"name=\"{env.WebRootFileProvider}\"");   //不一一输出了  原理一样的
-                //await context.Response.WriteAsync($"connectionString=\"{configuration["connectionString:defaultConnectionString"]}\"");
-                //await context.Response.WriteAsync($"name=\"{configuration["name"]}\"");
-                await context.Response.WriteAsync("Hello World!");
-            });
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync($"name=\"{env.ApplicationName}\"");
+            //    await context.Response.WriteAsync($"name=\"{env.ContentRootFileProvider}\"");
+            //    await context.Response.WriteAsync($"name=\"{env.ContentRootPath}\"");
+            //    await context.Response.WriteAsync($"name=\"{env.EnvironmentName}\"");
+            //    await context.Response.WriteAsync($"name=\"{env.WebRootFileProvider}\"");   //不一一输出了  原理一样的
+            //    //await context.Response.WriteAsync($"connectionString=\"{configuration["connectionString:defaultConnectionString"]}\"");
+            //    //await context.Response.WriteAsync($"name=\"{configuration["name"]}\"");
+            //    await context.Response.WriteAsync("Hello World!");
+            //});
         }
     }
 }
